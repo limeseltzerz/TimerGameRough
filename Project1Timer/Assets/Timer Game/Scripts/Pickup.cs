@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+    public ToyType ToyType;
     bool isHolding = false;
     bool hasScored = false; // tracks if item gave score already
 
@@ -10,6 +11,7 @@ public class Pickup : MonoBehaviour
     [SerializeField]
     float maxDistance = 3f;
     float distance;
+
 
     TempParent tempParent;
     Rigidbody rb;
@@ -50,34 +52,34 @@ public class Pickup : MonoBehaviour
             Debug.Log("Temp Parent Item not found in scene");
         }
     }
-        private void OnMouseUp()
-        {
+    private void OnMouseUp()
+    {
         Drop();
-        }
-        private void OnMouseExit()
-        {
+    }
+    private void OnMouseExit()
+    {
         Drop();
-        }
+    }
 
-        private void Hold()
-        {
-            distance = Vector3.Distance(this.transform.position, tempParent.transform.position);
+    private void Hold()
+    {
+        distance = Vector3.Distance(this.transform.position, tempParent.transform.position);
 
-        if(distance >= maxDistance)
+        if (distance >= maxDistance)
         {
             Drop();
         }
 
-         rb.linearVelocity = Vector3.zero;
-         rb.angularVelocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
 
-        if(Input.GetMouseButtonDown(1))
-         {
+        if (Input.GetMouseButtonDown(1))
+        {
             rb.AddForce(tempParent.transform.forward * throwForce);
             Drop();
 
-         }
         }
+    }
     private void Drop()
     {
         if (isHolding)
@@ -91,10 +93,29 @@ public class Pickup : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (!hasScored && collision.gameObject.CompareTag("Toybox"))
+        Debug.Log(name + " collided with " + collision.gameObject.name);
+        if (hasScored) return;
+
+        // Check if the object we collided with is a ToyBox
+        ToyBox toyBox = collision.gameObject.GetComponent<ToyBox>();
+        if (toyBox != null)
         {
-            GameManager.Instance?.IncreaseScore(1);
-            hasScored = true; // clamps/prevents score 
+            if (ToyType == toyBox.correctToyType)
+            {
+                GameManager.Instance?.IncreaseScore(1); // correct toy
+                Debug.Log(name + " placed in correct box! +1 point");
+            }
+            else
+            {
+                GameManager.Instance?.IncreaseScore(-1); // wrong toy
+                Debug.Log(name + " placed in wrong box! -1 point");
+            }
+
+            hasScored = true; // prevent scoring multiple times
+        }
+        else
+        {
+            Debug.Log("No Toybox Component found aww");
         }
     }
 }

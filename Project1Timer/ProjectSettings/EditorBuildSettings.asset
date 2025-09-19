@@ -6,11 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Timer Game/Scenes/TimerScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Timer Game/Scenes/Main Menu.unity
+    guid: 8e158d95c2f32144bbef5637db659d97
+  - enabled: 1
+    path: Assets/Timer Game/Scenes/MainGame.unity
+    guid: a9ec7750a8ba1084faaa76654ae90ee5
   - enabled: 1
     path: Assets/Timer Game/Scenes/GameOver.unity
     guid: c4d468f35be060346914412df910da62
+  - enabled: 1
+    path: Assets/Timer Game/Scenes/GameWin!.unity
+    guid: 31f257b9851bea94eab668e01c4434f5
+  - enabled: 1
+    path: Assets/Timer Game/Scenes/Base Controls.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

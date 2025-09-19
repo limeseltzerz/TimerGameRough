@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8abfd842ad1827a45a3699ad573440f2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 48596
+  packageName: Kids Room
+  packageVersion: 1.4
+  assetPath: Assets/Kids Room/Scene/LightingData.asset
+  uploadId: 787486

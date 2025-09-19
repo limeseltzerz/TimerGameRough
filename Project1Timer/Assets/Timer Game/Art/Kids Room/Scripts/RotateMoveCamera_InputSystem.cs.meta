@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: c9b47aedf49cdd94e857da180f2354a4
+AssetOrigin:
+  serializedVersion: 1
+  productId: 48596
+  packageName: Kids Room
+  packageVersion: 1.4
+  assetPath: Assets/Kids Room/Scripts/RotateMoveCamera_InputSystem.cs
+  uploadId: 787486
